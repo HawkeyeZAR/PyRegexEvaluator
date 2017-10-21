@@ -14,7 +14,7 @@ It will then find your results, it makes testing and creating your patterns easi
 How to use			
 -------------------		
 
-First paste in your test data, then enter your regex patter to find and hit Enter.
+First paste in your test data, then enter your regex pattern to find and hit Enter.
 Or you can just click on the find button
 
 > **Note:**
