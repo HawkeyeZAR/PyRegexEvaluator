@@ -28,7 +28,7 @@ Or you can just click on the find button
 
 
 There will be a slight variance between results. 
-As search is using finditer and the other search is using findall.
+As one search is using finditer and the other search is using findall.
 
 
 ----------
