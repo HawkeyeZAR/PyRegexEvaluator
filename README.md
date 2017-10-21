@@ -36,8 +36,3 @@ As search is using finditer and the other search is using findall.
 
 ![enter image description here](https://github.com/HawkeyeZAR/PyRegexEvaluator/blob/master/pyregex.png)
 
-
-
-#� �P�y�R�e�g�e�x�E�v�a�l�u�a�t�o�r�
-�
-�
