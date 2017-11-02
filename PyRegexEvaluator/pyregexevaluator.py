@@ -9,7 +9,7 @@ import tkinter as tk
 from tkinter import Tk, ttk, Frame, FALSE, Text, Button, \
     Scrollbar, Entry, END, INSERT, messagebox, Checkbutton
 
-from libs.popup import Popup
+from libs.popup import RightClickMenu
 from libs.highlighter import Highlighter
 
 
@@ -35,6 +35,11 @@ class PyRegexEvaluator(Frame):
         self.root.iconbitmap('images\icon.ico')
         self.grid(column=0, row=0, sticky='nsew', padx=12, pady=5)
 
+        self.create_widgets()
+        self.create_right_click_menu()
+
+    def create_widgets(self):
+        '''Create and load all widgets'''
         # Entry widget and Label Section
         label_text = 'Please enter regex expression to find: '
         self.regex_label = tk.Label(self, text=label_text)
@@ -84,17 +89,16 @@ class PyRegexEvaluator(Frame):
         self.auto_find.grid(row=5, column=0, sticky='')
         self.auto_find.deselect()
 
+    def create_right_click_menu(self):
+        '''Creates and binds the right click popup menu'''
         # Instanciate the imported popup class
-        self.popup = Popup(parent)
-        self.popup.entry_text = self.regex_pattern
-        self.popup.textbox_text = self.data_textbox
-        self.popup2 = Popup(parent)
-        self.popup2.textbox_text = self.output_textbox
-
+        self.popup = RightClickMenu(self.master, self.regex_pattern)
+        self.popup2 = RightClickMenu(self.master, self.data_textbox)
+        self.popup3 = RightClickMenu(self.master, self.output_textbox)
         # Bind the popup menus and Enter Key to the appropriate widgets.
         self.regex_string.bind("<Button-3>", self.popup.entry_popup)
-        self.data_textbox.bind("<Button-3>", self.popup.text_popup)
-        self.output_textbox.bind("<Button-3>", self.popup2.text_popup)
+        self.data_textbox.bind("<Button-3>", self.popup2.text_popup)
+        self.output_textbox.bind("<Button-3>", self.popup3.text_popup)
         self.regex_string.bind("<Return>", lambda _: self.on_find())
 
     # Method for the find_btn, <Return> bind and Checkbutton
